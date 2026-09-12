@@ -1,11 +1,22 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
-import { FormProfissionalModule } from './form_profissional/form_profissional.module';
 import { FormUsuarioModule } from './form_usuario/form_usuario.module';
 
+
 @Module({
-  imports: [DatabaseModule, FormProfissionalModule, FormUsuarioModule],
-  controllers: [],
-  providers: [],
+
+    imports: [
+        // Carrega as variáveis do arquivo .env
+        // e disponibiliza o ConfigService globalmente
+        ConfigModule.forRoot({
+            isGlobal: true,
+        }),
+        DatabaseModule,
+        FormUsuarioModule,
+    ],
+    controllers: [],
+    providers: [],
+
 })
 export class AppModule {}

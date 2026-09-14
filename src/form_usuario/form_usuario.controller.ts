@@ -21,11 +21,11 @@ export class FormUsuarioController {
 
     @ApiResponse({
         status: 201,
-        description: 'Formulário cadastrado com sucesso'
+        description: 'Formulário enviado com sucesso'
     })
     @ApiResponse({
         status: 400,
-        description: 'Dados inválidos para cadastro'
+        description: 'Dados para o envio'
     })
 
     criar(

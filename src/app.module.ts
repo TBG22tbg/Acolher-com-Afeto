@@ -1,5 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { ServeStaticModule} from '@nestjs/serve-static';
+import { join } from "path";
+
 import { DatabaseModule } from './database/database.module';
 import { FormUsuarioModule } from './form_usuario/form_usuario.module';
 
@@ -12,11 +15,13 @@ import { FormUsuarioModule } from './form_usuario/form_usuario.module';
         ConfigModule.forRoot({
             isGlobal: true,
         }),
+
+        ServeStaticModule.forRoot({
+            rootPath:join(__dirname,'..','public'),
+        }),
         DatabaseModule,
         FormUsuarioModule,
     ],
-    controllers: [],
-    providers: [],
 
 })
 export class AppModule {}

@@ -18,6 +18,28 @@ faqHomeItems.forEach(item => {
 
 });
 
+// NAVEGAÇÃO
+document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    let paginaAtual = window.location.pathname.split("/").pop();
+
+    if (paginaAtual === "") {
+        paginaAtual = "index.html";
+    }
+
+    navLinks.forEach(link => {
+        const href = link.getAttribute("href");
+        const paginaLink = href.split("/").pop();
+
+        if (paginaLink === paginaAtual) {
+            link.classList.add("active");
+        } else {
+            link.classList.remove("active");
+        }
+    });
+});
+
 // MENU HAMBURGER
 document.addEventListener("DOMContentLoaded", () => {
 
